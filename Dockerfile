@@ -1,10 +1,3 @@
-FROM golang
-
-WORKDIR /go/src/app
-COPY . .
-
-RUN go get -d -v ./...
-RUN go install -v ./...
-RUN go build -o webserver .
-
-CMD ["/go/src/app/webserver"]
+FROM public.ecr.aws/z9d2n7e1/nginx:1.19.5
+EXPOSE 80
+COPY index.html /usr/share/nginx/html
